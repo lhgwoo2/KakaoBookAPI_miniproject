@@ -42,7 +42,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         descriptionTextView = (TextView) itemView.findViewById(R.id.bookitem_tv_description);
 
         itemView.setOnClickListener(this);
-
     }
 
     @Override

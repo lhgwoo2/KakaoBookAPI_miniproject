@@ -36,7 +36,6 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         super();
         this.context = context;
         this.mListener = mListener;
-
     }
 
     @Override

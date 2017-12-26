@@ -38,9 +38,9 @@ import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- *  @title  AssignActivity
- *  @detail 카카오 restAPI에서 가져온 정보를 뷰 목록으로 보여주고, 웹뷰로 상세정보를 보여주는 메인 액티비티
- *  @author 이현기
+ * @author 이현기
+ * @title AssignActivity
+ * @detail 카카오 restAPI에서 가져온 정보를 뷰 목록으로 보여주고, 웹뷰로 상세정보를 보여주는 메인 액티비티
  */
 public class AssignActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -82,9 +82,9 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
     /**
-     *  @title initView
-     *  @detail 뷰들을 초기화 하는 메소드
-     * */
+     * @title initView
+     * @detail 뷰들을 초기화 하는 메소드
+     */
     public void initView() {
         tvSearch = (EditText) findViewById(R.id.main_tv_search);
         searchButtonImg = (ImageView) findViewById(R.id.main_img_search_button);
@@ -103,9 +103,9 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
     /**
-     *  @title initListener
-     *  @detail 검색버튼 리스너, 검색텍스트뷰리스너, 리사이클러뷰 클릭리스너를 초기화한다
-     * */
+     * @title initListener
+     * @detail 검색버튼 리스너, 검색텍스트뷰리스너, 리사이클러뷰 클릭리스너를 초기화한다
+     */
     public void initListener() {
         searchButtonImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,8 +120,6 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
                         searchBooks(getKeyword());
                     }
                 }, 1000);
-
-
             }
         });
 
@@ -146,6 +144,9 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
             }
         });
 
+        /**
+         * @detail 클릭된 itemViewHolder의 위치를 액티비티로 가져오는 인터페이스 구현
+         */
         mListener = new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -172,11 +173,8 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
                         }
                     }
                 }
-
             }
         });
-
-
     }
 
     @Override
@@ -186,9 +184,9 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
     /**
-     *  @title presentViewMode
-     *  @detail 검색내용이 없을 경우 정보없음 페이지, 있을 경우 컨텐츠를 표시한다
-     * */
+     * @title presentViewMode
+     * @detail 검색내용이 없을 경우 정보없음 페이지, 있을 경우 컨텐츠를 표시한다
+     */
     public void presentViewMode() {
         if (bookAdapter.getBookSize() == 0) {
             mainRv.setVisibility(View.GONE);
@@ -212,9 +210,9 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
     /**
-     *  @title loadMoreData
-     *  @detail 어댑터의 플래그를 변환하여 뷰타입을 변경한다
-     * */
+     * @title loadMoreData
+     * @detail 어댑터의 플래그를 변환하여 뷰타입을 변경한다
+     */
     private void loadMoreData() {
         bookAdapter.showLoading(true);
         bookAdapter.notifyItemChanged(bookAdapter.getItemCount() - 1);
@@ -224,7 +222,6 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
                 searchBooks(searchKeyword);
             }
         }, 1000);
-
     }
 
     // 가상키보드 숨기기
@@ -236,13 +233,11 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
         return searchKeyword = tvSearch.getText().toString();
     }
 
-
-
     /**
-     *  @title searchBooks
-     *  @detail kakao Books API에서 정보를 가져와 어댑터에 전달하여 리사이클러뷰로 뿌려주는 역할을 한다.
-     *           AsyncTask를 기본으로하여 비동기처리한다.
-     * */
+     * @title searchBooks
+     * @detail kakao Books API에서 정보를 가져와 어댑터에 전달하여 리사이클러뷰로 뿌려주는 역할을 한다.
+     * AsyncTask를 기본으로하여 비동기처리한다.
+     */
     private void searchBooks(final String keyword) {
 
         AsyncTask asyncTask = new AsyncTask<String, Void, BookDTO>() {
@@ -257,7 +252,6 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
                     myConnection.setDoInput(true);
 
                     if (myConnection.getResponseCode() == 200) {
-
                         InputStream responseBody = myConnection.getInputStream();
                         InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
                         JsonReader jsonReader = new JsonReader(responseBodyReader);
@@ -270,7 +264,6 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
                 } catch (IOException e2) {
                     e2.printStackTrace();
                 }
-
                 return null;
             }
 
