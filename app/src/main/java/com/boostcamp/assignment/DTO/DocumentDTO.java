@@ -1,9 +1,9 @@
 package com.boostcamp.assignment.DTO;
 
 /**
- *      @author 현기
- *      @title DocumentDTO
- *      @detail 검색된 책 개별 아이템
+ * @title DocumentDTO
+ * @detail 검색된 책 개별 아이템
+ * @author 이현기
  */
 public class DocumentDTO {
 

@@ -10,9 +10,9 @@ import com.boostcamp.assignment.Interface.RecyclerViewClickListener;
 import com.boostcamp.assignment.R;
 
 /**
- *      @author 현기
- *      @title ItemViewHolder
- *      @detail 리사이클러뷰 아이템 홀더
+ * @title ItemViewHolder
+ * @detail 리사이클러뷰 아이템 홀더
+ * @author 이현기
  */
 
 public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

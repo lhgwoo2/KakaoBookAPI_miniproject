@@ -1,9 +1,9 @@
 package com.boostcamp.assignment.DTO;
 
 /**
- *      @author 현기
- *      @title MetaDTO
- *      @detail 검색된 책 전체의 메타 정보
+ * @title MetaDTO
+ * @detail 검색된 책 전체의 메타 정보
+ * @author 이현기
  */
 public class MetaDTO {
 

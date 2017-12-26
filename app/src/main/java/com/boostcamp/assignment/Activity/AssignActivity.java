@@ -39,7 +39,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 /**
  *  @title  AssignActivity
- *  @detail 카카오 restAPI에서 가져온 정보를 뷰 목록으로 보여주고, 웹뷰로 상세정보를 보여주도록한다.
+ *  @detail 카카오 restAPI에서 가져온 정보를 뷰 목록으로 보여주고, 웹뷰로 상세정보를 보여주는 메인 액티비티
+ *  @author 이현기
  */
 public class AssignActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -77,9 +78,7 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
 
         initView();
         initListener();
-        bookAdapter = new BookAdapter(this, mListener);
         presentViewMode();
-
     }
 
     /**
@@ -98,13 +97,14 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
+        bookAdapter = new BookAdapter(this, mListener);
         searchProgressBar = (ProgressBar) findViewById(R.id.main_search_progressbar);
         searchProgressBar.setVisibility(View.GONE);
     }
 
     /**
      *  @title initListener
-     *  @detail 검색버튼 리스너, 검색텍스트뷰리스너, 들을 초기화 하는 메소드
+     *  @detail 검색버튼 리스너, 검색텍스트뷰리스너, 리사이클러뷰 클릭리스너를 초기화한다
      * */
     public void initListener() {
         searchButtonImg.setOnClickListener(new View.OnClickListener() {
@@ -185,8 +185,11 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
         searchBooks(searchKeyword);
     }
 
+    /**
+     *  @title presentViewMode
+     *  @detail 검색내용이 없을 경우 정보없음 페이지, 있을 경우 컨텐츠를 표시한다
+     * */
     public void presentViewMode() {
-
         if (bookAdapter.getBookSize() == 0) {
             mainRv.setVisibility(View.GONE);
             tvSearchItem.setVisibility(View.GONE);
@@ -208,8 +211,11 @@ public class AssignActivity extends AppCompatActivity implements SwipeRefreshLay
         }
     }
 
+    /**
+     *  @title loadMoreData
+     *  @detail 어댑터의 플래그를 변환하여 뷰타입을 변경한다
+     * */
     private void loadMoreData() {
-
         bookAdapter.showLoading(true);
         bookAdapter.notifyItemChanged(bookAdapter.getItemCount() - 1);
         mHandler.postDelayed(new Runnable() {
