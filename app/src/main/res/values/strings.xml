@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Assignment</string>
+    <string name="search_hint">책 검색 입력</string>
+    <string name="noitem_text">책 검색 결과가 없습니다!</string>
+    <string name="search_item">(으)로 검색한 결과</string>
+    <string name="book_num">권</string>
+    <string name="apiKey">KakaoAK 5021abc60d07b680c86b44dd1eb9fb30</string>
+    <string name="bookSearchBaseURL">https://dapi.kakao.com/v2/search/book?query=</string>
+</resources>
